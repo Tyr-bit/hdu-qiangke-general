@@ -219,11 +219,11 @@ def pick_courses(s, hidden, referer):
         course_no += 1
         if course_no > 1:
             print()
-        kw = input("输入课程号(如 A2301240), 直接回车结束添加: ").strip().upper()
+        kw = input("输入课程号(如 XX000000), 直接回车结束添加: ").strip().upper()
         if not kw:
             break
         if not re.fullmatch(r"[A-Z0-9]+", kw):
-            print("课程号应为字母+数字, 如 A2301240")
+            print("课程号应为字母+数字, 如 XX000000")
             continue
         try:
             jxbs = get_jxb(s, hidden, referer, kw, "")
@@ -246,7 +246,7 @@ def pick_courses(s, hidden, referer):
             sksj = str(j.get("sksj", "")).replace("<br/>", " / ")
             print("  [%d] %s | %s | 容量%s 已选%s" % (i, name, sksj,
                                                    j.get("jxbrl"), j.get("yxzrs")))
-        csel = input("选择教学班: [序号逗号分隔] / [回车=全部] / [教师关键词, 如:朱红]: ").strip()
+        csel = input("选择教学班: [序号逗号分隔] / [回车=全部] / [教师关键词, 如:张老师]: ").strip()
         targets = []
         if not csel:
             targets = jxbs
